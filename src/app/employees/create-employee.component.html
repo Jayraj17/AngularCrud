@@ -1,7 +1,7 @@
 <form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employee)">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Create Employee</h3>
+      <h3 class="panel-title">Create New Employee</h3>
     </div>
     <div class="panel-body">
       <div class="form-group" [class.has-error]="fullNameControl.invalid && fullNameControl.touched"
@@ -122,8 +122,7 @@
 
         <div class="form-group" [class.has-error]="password.touched && password.invalid">
           <label for="password" class="control-label">Password</label>
-          <input name="password" required type="text" class="form-control"
-           (change)="confirmPassword.control.updateValueAndValidity()"
+          <input name="password" required type="text" class="form-control" (change)="confirmPassword.control.updateValueAndValidity()"
             id="password" [(ngModel)]="employee.password" #password="ngModel">
           <span class="help-block" *ngIf="password.errors?.required && password.touched">
             Password is required

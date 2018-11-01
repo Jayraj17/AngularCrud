@@ -31,9 +31,10 @@
                             {{employee.dateofBirth | date}}
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-xs-6">
-                            Mail ID : -
+                            Contact Preference : -
                         </div>
                         <div class="col-xs-6">
                             {{employee.contactPreference}}
@@ -41,10 +42,36 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            Department : -
+                            Mail ID : -
                         </div>
                         <div class="col-xs-6">
-                            {{employee.department}}
+                            {{employee.email}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Phone : -
+                        </div>
+                        <div class="col-xs-6">
+                            {{employee.phoneNumber}}
+                        </div>
+                    </div>
+                   
+
+
+
+
+                    
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Department : -
+                        </div>
+                        <div class="col-xs-6" [ngSwitch]="employee.department">
+                           <span *ngSwitchCase="1">Help Desk</span>
+                           <span *ngSwitchCase="2">HR</span>
+                           <span *ngSwitchCase="3">IT</span>
+                           <span *ngSwitchCase="4">Payroll</span>
+                           <span *ngSwitchDefault>N/A</span>
                         </div>
                     </div>
                     <div class="row">

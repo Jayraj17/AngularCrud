@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Department } from '../models/department.model';
 import { Employee } from '../models/employee.model';
+import { EmployeeService } from './employee.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -27,8 +29,8 @@ export class CreateEmployeeComponent implements OnInit {
     department: "select",
     isActive: null,
     photoPath: null,
-    password:null,
-    confirmPassword:null
+    password: null,
+    confirmPassword: null
   };
 
 
@@ -42,7 +44,8 @@ export class CreateEmployeeComponent implements OnInit {
   ];
 
 
-  constructor() {
+  constructor(private _employeeService:EmployeeService,
+              private _router : Router) {
 
   }
   togglePhotoPreview() {
@@ -53,10 +56,12 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   // saveEmployee(empForm : NgForm): void 
-  saveEmployee(newEmployee: Employee): void {
+  saveEmployee(): void {
     // console.log(empForm.value);
     // console.log(empForm);
-    console.log(newEmployee);
+    //console.log(newEmployee);
+    this._employeeService.save(this.employee);
+    this._router.navigate(['list']);
   }
 
 }

@@ -30,7 +30,7 @@ export class ListEmployeesComponent implements OnInit {
         gender: 'Male',
         contactPreference: 'Vaibhav@123',
         dateofBirth: new Date('10/25/1990'),
-        department: 'IT',
+        department: '3',
         isActive: true,
         photoPath: 'assets/images/man.jpg',
         password: '123456',

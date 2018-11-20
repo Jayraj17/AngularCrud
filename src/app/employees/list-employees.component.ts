@@ -10,14 +10,31 @@ import { EmployeeService } from './employee.service'
 export class ListEmployeesComponent implements OnInit {
   message: string = '';
   employees: Employee[];
+  employeeToDisplay: Employee;
+  private arrayIndex = 0;
 
 
-  constructor(private _employeeService:EmployeeService) { }
+  constructor(private _employeeService: EmployeeService) { }
 
-  ngOnInit() 
-  {
+  ngOnInit() {
     this.employees = this._employeeService.getEmployees();
+    this.employeeToDisplay = this.employees[0];
   }
+
+
+  nextEmployee(): void {
+
+    if (this.arrayIndex <= 2) {
+      this.employeeToDisplay = this.employees[this.arrayIndex];
+      this.arrayIndex++;
+    }
+    else {
+      this.employeeToDisplay = this.employees[0];
+      this.arrayIndex = 1;
+    }
+
+  }
+
 
   public addnew(): void {
     debugger;

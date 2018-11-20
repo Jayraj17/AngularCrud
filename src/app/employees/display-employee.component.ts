@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 import { Employee } from '../models/employee.model';
 @Component({
   selector: 'app-display-employee',
@@ -7,7 +7,17 @@ import { Employee } from '../models/employee.model';
 })
 export class DisplayEmployeeComponent implements OnInit {
 
-  @Input() employee: Employee;
+  private _employee:Employee;
+  @Input() 
+  set employee(val : Employee){
+    console.log('Previouse :' +(this.employee ? this.employee.name :'NULL'));
+    console.log('Current : '+ val.name);
+    this._employee= val;
+  }
+  get employee():Employee{
+
+    return this._employee;
+  }
   constructor() { }
 
   ngOnInit() {

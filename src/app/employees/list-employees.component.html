@@ -1,7 +1,15 @@
 <button (click)="addnew()" class="btn">Add New User</button>
 {{message}}
+
+
+<h1>
+    
+</h1>
+
+
 <div *ngFor="let employee of employees">
-    <app-display-employee [employee]="employee"></app-display-employee>
+    <app-display-employee [employee]="employee">        
+    </app-display-employee>
 </div>
 <!-- <button (click)="nextEmployee()" class="btn btn-primary">
     Veiw Next Employee

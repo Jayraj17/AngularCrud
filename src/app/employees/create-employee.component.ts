@@ -44,8 +44,8 @@ export class CreateEmployeeComponent implements OnInit {
   ];
 
 
-  constructor(private _employeeService:EmployeeService,
-              private _router : Router) {
+  constructor(private _employeeService: EmployeeService,
+    private _router: Router) {
 
   }
   togglePhotoPreview() {

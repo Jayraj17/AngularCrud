@@ -10,7 +10,8 @@ import { EmployeeService } from './employee.service'
 export class ListEmployeesComponent implements OnInit {
   message: string = '';
   employees: Employee[];
- // employeeToDisplay: Employee;
+  
+  // employeeToDisplay: Employee;
   //private arrayIndex = 0;
 
 
@@ -21,6 +22,7 @@ export class ListEmployeesComponent implements OnInit {
     //this.employeeToDisplay = this.employees[0];
   }
 
+  
 
   // nextEmployee(): void {
 

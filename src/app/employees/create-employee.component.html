@@ -66,6 +66,7 @@
           <label class="radio-inline">
             <input type="radio" required #gender="ngModel" value="female" name="gender" [(ngModel)]="employee.gender">
             Female
+            
           </label>
         </div>
         <span class="help-block" *ngIf="gender.invalid && gender.touched">

@@ -66,7 +66,7 @@
           <label class="radio-inline">
             <input type="radio" required #gender="ngModel" value="female" name="gender" [(ngModel)]="employee.gender">
             Female
-            
+
           </label>
         </div>
         <span class="help-block" *ngIf="gender.invalid && gender.touched">
@@ -77,7 +77,8 @@
       <div class="form-group" [class.has-error]="isActive.invalid && isActive.touched">
         <div class="form-control">
           <label class="checkbox-inline control-label">
-            <input type="checkbox" name="isActive" [required]="employee.isActive==null" #isActive="ngModel" [(ngModel)]="employee.isActive">
+            <input type="checkbox" name="isActive" [required]="employee.isActive==null" #isActive="ngModel"
+              [(ngModel)]="employee.isActive">
             Is Active
           </label>
         </div>
@@ -90,8 +91,8 @@
         <label for="department" class="control-label">
           Department
         </label>
-        <select id="department" name="department" appSelectValidator="select" #department="ngModel" [(ngModel)]="employee.department"
-          class="form-control">
+        <select id="department" name="department" appSelectValidator="select" #department="ngModel"
+          [(ngModel)]="employee.department" class="form-control">
           <!-- <option value="1">Help Desk</option>
         <option value="2">HR</option>
         <option value="3">IT</option>
@@ -110,7 +111,16 @@
 
       <div class="form-group">
         <label for="dateOfBirth">Date Of Birth</label>
-        <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" type="date" class="form-control">
+        <!-- <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" type="date" class="form-control"> -->
+        <dx-date-box
+        placeholder="dd/MM/yyyy"
+        [showClearButton]="true"
+        [useMaskBehavior]="true"        
+        displayFormat="dd/MM/yyyy"
+        type="date"
+        [(ngModel)]="employee.dateOfBirth"
+        [value]="date">
+    </dx-date-box>
       </div>
 
       <div class="form-group">
@@ -119,13 +129,14 @@
       </div>
 
 
-      <div ngModelGroup="passwordGroup" [class.has-error]="confirmPassword.touched && confirmPassword.invalid && !confirmPassword.errors?.required">
+      <div ngModelGroup="passwordGroup"
+        [class.has-error]="confirmPassword.touched && confirmPassword.invalid && !confirmPassword.errors?.required">
 
         <div class="form-group" [class.has-error]="password.touched && password.invalid">
           <label for="password" class="control-label">Password</label>
           <input name="password" required type="text" class="form-control"
-           (change)="confirmPassword.control.updateValueAndValidity()"
-            id="password" [(ngModel)]="employee.password" #password="ngModel">
+            (change)="confirmPassword.control.updateValueAndValidity()" id="password" [(ngModel)]="employee.password"
+            #password="ngModel">
           <span class="help-block" *ngIf="password.errors?.required && password.touched">
             Password is required
           </span>
@@ -151,6 +162,7 @@
           {{ previewPhoto? "Hide ": "Show "}} Preview
         </button>
       </div>
+
 
       <div class="form-group">
         <img [src]="employee.photoPath" height="200" width="200" *ngIf="previewPhoto" />

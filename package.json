@@ -23,6 +23,8 @@
     "@angular/router": "^6.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.4",
+    "devextreme": "^18.2.7",
+    "devextreme-angular": "^18.2.7",
     "ngx-bootstrap": "^3.0.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

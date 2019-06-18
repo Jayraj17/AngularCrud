@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DxDateBoxModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-root',

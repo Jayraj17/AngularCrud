@@ -55,11 +55,17 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit() {
   }
 
+  gotoDashboard() 
+  {
+    this._router.navigate(['/Dashboard']);
+  }
+
   // saveEmployee(empForm : NgForm): void 
   saveEmployee(): void {
     // console.log(empForm.value);
     // console.log(empForm);
     //console.log(newEmployee);
+    console.log(this.employee);
     this._employeeService.save(this.employee);
     this._router.navigate(['list']);
   }

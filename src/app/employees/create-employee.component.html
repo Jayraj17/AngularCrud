@@ -1,3 +1,4 @@
+<button (click)="gotoDashboard()" class="btn">Go To Dashboard</button>
 <form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
   <div class="panel panel-primary">
     <div class="panel-heading">
@@ -31,8 +32,7 @@
       <div class="form-group" [class.has-error]="phoneNumber.invalid">
         <label class="control-lablel" for="phoneNumber">Phone Number</label>
         <input [required]="contactPreference.value=='phone'" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel"
-          [(ngModel)]="employee.phonenumber" type="number" maxlength="3"  min="0" 
-          max="100"  class="form-control">
+          [(ngModel)]="employee.phonenumber" type="number"   class="form-control">
         <span class="help-block" *ngIf="phoneNumber.errors?.required">
           Phone Number is required
         </span>

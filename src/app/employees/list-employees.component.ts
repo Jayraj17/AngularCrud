@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { EmployeeService } from './employee.service'
+import { Router } from '@angular/router';
 
 @Component({
 
@@ -15,13 +16,19 @@ export class ListEmployeesComponent implements OnInit {
   //private arrayIndex = 0;
 
 
-  constructor(private _employeeService: EmployeeService) { }
+  constructor(private _employeeService: EmployeeService,private router:Router) { 
+
+  }
 
   ngOnInit() {
     this.employees = this._employeeService.getEmployees();
     //this.employeeToDisplay = this.employees[0];
   }
 
+  gotoDashboard() 
+  {
+    this.router.navigate(['/Dashboard']);
+  }
   
 
   // nextEmployee(): void {

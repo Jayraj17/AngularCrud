@@ -67,6 +67,7 @@ export class EmployeeService {
         return this.listEmployees;
     }
     save(employee: Employee) {
+       // alert(employee.phoneNumber);
         this.listEmployees.push(employee);
 
     }

@@ -31,8 +31,8 @@
 
       <div class="form-group" [class.has-error]="phoneNumber.invalid">
         <label class="control-lablel" for="phoneNumber">Phone Number</label>
-        <input [required]="contactPreference.value=='phone'" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel"
-          [(ngModel)]="employee.phonenumber" type="number"   class="form-control">
+        <input [required]="contactPreference.value=='phone'" id="phoneNumber" name="phonenumber" #phoneNumber="ngModel"
+          [(ngModel)]="employee.phoneNumber" type="number"   class="form-control">
         <span class="help-block" *ngIf="phoneNumber.errors?.required">
           Phone Number is required
         </span>
@@ -42,12 +42,12 @@
         <label class="control-label">Contact Preference</label>
         <div class="form-control">
           <label class="radio-inline">
-            <input type="radio" required #contactPreference="ngModel" value="email" name="contactPreference"
+            <input type="radio" required #contactPreference="ngModel" value="Email" name="contactPreference"
               [(ngModel)]="employee.contactPreference">
             Email
           </label>
           <label class="radio-inline">
-            <input type="radio" required #contactPreference="ngModel" value="phone" name="contactPreference"
+            <input type="radio" required #contactPreference="ngModel" value="Phone" name="contactPreference"
               [(ngModel)]="employee.contactPreference">
             Phone
           </label>
@@ -61,13 +61,12 @@
         <label class="control-label">Gender</label>
         <div class="form-control">
           <label class="radio-inline">
-            <input type="radio" required #gender="ngModel" value="male" name="gender" [(ngModel)]="employee.gender">
+            <input type="radio" required #gender="ngModel" value="Male" name="gender" [(ngModel)]="employee.gender">
             Male
           </label>
           <label class="radio-inline">
-            <input type="radio" required #gender="ngModel" value="female" name="gender" [(ngModel)]="employee.gender">
+            <input type="radio" required #gender="ngModel" value="Female" name="gender" [(ngModel)]="employee.gender">
             Female
-
           </label>
         </div>
         <span class="help-block" *ngIf="gender.invalid && gender.touched">
@@ -112,16 +111,19 @@
 
       <div class="form-group">
         <label for="dateOfBirth">Date Of Birth</label>
-        <!-- <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" type="date" class="form-control"> -->
+        <!-- <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateofBirth" type="date" class="form-control"> -->
+        
         <dx-date-box
         placeholder="dd/MM/yyyy"
         [showClearButton]="true"
         [useMaskBehavior]="true"        
         displayFormat="dd/MM/yyyy"
         type="date"
-        [(ngModel)]="employee.dateOfBirth"
+        name="dateOfBirth" 
+        [(ngModel)]="employee.dateofBirth"
         [value]="date">
     </dx-date-box>
+    
       </div>
 
       <div class="form-group">

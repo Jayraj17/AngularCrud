@@ -66,7 +66,11 @@ export class CreateEmployeeComponent implements OnInit {
     // console.log(empForm);
     //console.log(newEmployee);
     console.log(this.employee);
-    this._employeeService.save(this.employee);
+    this._employeeService.save(this.employee).subscribe(
+      (data) => {
+         alert('sUCCESS');
+      }
+    );
     this._router.navigate(['list']);
   }
 

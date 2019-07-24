@@ -17,6 +17,7 @@ import { } from 'devextreme-angular';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/header.component';
+import { HttpClientModule } from '@angular/common/http';
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
   { path: 'create', component: CreateEmployeeComponent },  
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     FormsModule,
     DevExtremeModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [EmployeeService],

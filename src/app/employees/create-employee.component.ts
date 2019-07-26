@@ -3,7 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Department } from '../models/department.model';
 import { Employee } from '../models/employee.model';
 import { EmployeeService } from './employee.service'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-employee',
@@ -45,7 +46,10 @@ export class CreateEmployeeComponent implements OnInit {
 
 
   constructor(private _employeeService: EmployeeService,
-    private _router: Router) {
+    private _router: Router, private aroute: ActivatedRoute,    
+    private toastr: ToastrService,
+    
+    ) {
 
   }
   togglePhotoPreview() {
@@ -53,23 +57,33 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.aroute.paramMap.subscribe(
+      paramMap => {
+        const id = +paramMap.get('id');
+        if (id === 0) {
+
+        } else {
+          this.getEmployeeDetails(id);
+        }
+      }
+    );
   }
 
-  gotoDashboard() 
-  {
+  getEmployeeDetails(id: number): void {
+    this._employeeService.getEmployees(id).subscribe(
+      (data) => {
+        this.employee = data[0];
+      }
+    );
+  }
+
+  gotoDashboard() {
     this._router.navigate(['/Dashboard']);
   }
-
-  // saveEmployee(empForm : NgForm): void 
   saveEmployee(): void {
-    // console.log(empForm.value);
-    // console.log(empForm);
-    //console.log(newEmployee);
     console.log(this.employee);
     this._employeeService.save(this.employee).subscribe(
-      (data) => {
-         alert('sUCCESS');
-      }
+      (data) => { this.toastr.success('Login Successfully');}
     );
     this._router.navigate(['list']);
   }

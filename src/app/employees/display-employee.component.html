@@ -1,4 +1,3 @@
-
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">{{employee.name}}</h3>
@@ -75,7 +74,15 @@
               {{employee.isActive}}
             </div>
           </div>
-
+          <div class="row">
+            <div class="col-xs-6">
+            </div>
+            <div class="col-xs-6">
+              <a class="btn" (click)="showForEdit(employee.id)">
+                EDIT
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

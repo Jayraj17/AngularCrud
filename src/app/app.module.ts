@@ -11,6 +11,9 @@ import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator
 import { EmployeeService } from './employees/employee.service';
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
+import { ToastrModule } from 'ngx-toastr'; 
+
 
 
 import { } from 'devextreme-angular';
@@ -20,7 +23,8 @@ import { HeaderComponent } from './dashboard/header.component';
 import { HttpClientModule } from '@angular/common/http';
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
-  { path: 'create', component: CreateEmployeeComponent },  
+  { path: 'create', component: CreateEmployeeComponent }, 
+  { path: 'create/:id', component: CreateEmployeeComponent },  
   { path: 'Login', component: LoginComponent },
   { path: 'Dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/Login', pathMatch: 'full' }
@@ -45,7 +49,9 @@ const appRoutes: Routes = [
     DevExtremeModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()  
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../models/login.model';
 import { ToastrService } from 'ngx-toastr';
-import { EmployeeService } from '../employees/employee.service';
+import { EmployeeService } from '../Services/employee.service';
 
 
 @Component({
@@ -42,8 +42,9 @@ export class LoginComponent implements OnInit {
     this.employee.getLogin(this.login.username, this.login.password).subscribe(
       (data) => {
         if (data) {
+          this.employee.isLogin = true;
           this.toastr.success('Login Successfully');
-          this.router.navigate(['/Dashboard']);
+          this.router.navigate(['/create']);
         } else {
           this.toastr.warning('Login Fail');
         }

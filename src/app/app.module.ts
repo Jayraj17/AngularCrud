@@ -8,10 +8,10 @@ import { AppComponent } from './app.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
-import { EmployeeService } from './employees/employee.service';
+import { EmployeeService } from './Services/employee.service';
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
 import { ToastrModule } from 'ngx-toastr'; 
 
 
@@ -21,12 +21,18 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreatedepartmentComponent } from './department/createdepartment.component';
+import { ListdepartmentComponent } from './department/listdepartment.component';
+import { DashboardviewComponent } from './dashboard/dashboardview.component';
+
+
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
   { path: 'create', component: CreateEmployeeComponent }, 
   { path: 'create/:id', component: CreateEmployeeComponent },  
   { path: 'Login', component: LoginComponent },
-  { path: 'Dashboard', component: DashboardComponent },
+  { path: 'Dashboard', component: DashboardviewComponent },
+  { path: 'CreateD', component: CreatedepartmentComponent },
   { path: '', redirectTo: '/Login', pathMatch: 'full' }
 ];
 
@@ -40,7 +46,10 @@ const appRoutes: Routes = [
     DisplayEmployeeComponent,    
     LoginComponent, 
     DashboardComponent, 
-    HeaderComponent,
+    HeaderComponent, 
+    CreatedepartmentComponent, 
+    ListdepartmentComponent, 
+    DashboardviewComponent, 
    
   ],
   imports: [
@@ -50,7 +59,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     ToastrModule.forRoot()  
   ],
   providers: [EmployeeService],

@@ -1,5 +1,5 @@
 <!-- <div class="container">
-  <nav class="navbar navbar-default">
+  <!-- <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
       <li>
         <a routerLink="Dashboard">Dashboard</a>
@@ -10,10 +10,14 @@
       <li>
         <a routerLink="create">Create</a>
       </li>
-    </ul>
-  </nav> -->
+    </ul> -->
+  <!-- </nav> --> 
 
-  <div class="container">
-     <router-outlet></router-outlet>
-</div>
+  <div class="container-fluid" *ngIf="employee.isLogin;else other_content"> 
+     <app-dashboard></app-dashboard>
+  </div>
+  <ng-template #other_content>
+    <router-outlet></router-outlet>
+  </ng-template>
+
 <!-- </div> -->

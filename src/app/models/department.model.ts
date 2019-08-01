@@ -1,4 +1,6 @@
 export class Department {    
-    id:number;
-    name:string;
+    deptId:number;
+    DepartmentName:string;
+    Description:string;
+    IsActive : boolean;
 }

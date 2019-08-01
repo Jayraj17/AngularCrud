@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
-import { EmployeeService } from './employee.service'
+import { EmployeeService } from '../Services/employee.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,12 +11,12 @@ import { Router } from '@angular/router';
 export class ListEmployeesComponent implements OnInit {
   message: string = '';
   employees: Employee[];
-  
+
   // employeeToDisplay: Employee;
   //private arrayIndex = 0;
 
 
-  constructor(private _employeeService: EmployeeService,private router:Router) { 
+  constructor(private _employeeService: EmployeeService, private router: Router) {
 
   }
 
@@ -24,6 +24,7 @@ export class ListEmployeesComponent implements OnInit {
     // this.employees = this._employeeService.getEmployees();
     this._employeeService.getEmployees(0).subscribe(
       (data) => {
+        console.log(data)
         this.employees = data;
       }, (error) => {
         alert('Error');
@@ -32,11 +33,10 @@ export class ListEmployeesComponent implements OnInit {
     //this.employeeToDisplay = this.employees[0];
   }
 
-  gotoDashboard() 
-  {
+  gotoDashboard() {
     this.router.navigate(['/Dashboard']);
   }
-  
+
 
   // nextEmployee(): void {
 
@@ -64,6 +64,7 @@ export class ListEmployeesComponent implements OnInit {
         contactPreference: 'Vaibhav@123',
         dateofBirth: new Date('10/25/1990'),
         department: '3',
+        departmentName: "test",
         isActive: true,
         photoPath: 'assets/images/man.jpg',
         password: '123456',

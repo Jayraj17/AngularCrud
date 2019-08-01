@@ -4,6 +4,8 @@ import { BaseServiceService } from "../shared/base-service.service";
 
 @Injectable()
 export class EmployeeService {
+     
+    public isLogin: boolean = false;
 
     constructor(private baseServiceService: BaseServiceService) { }
 

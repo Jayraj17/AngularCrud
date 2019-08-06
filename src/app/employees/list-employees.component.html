@@ -1,12 +1,16 @@
-
-<!-- <button (click)="addnew()" class="btn">Add New User</button>
-<button (click)="gotoDashboard()" class="btn">Go To Dashboard</button> -->
+<div class="form-group">
+    <div class="row">
+        <button (click)="Generatexls()" class="btn btn-primary" style="margin: 5px;">Export To Xls</button>
+        <button (click)="Generatepdf()" class="btn btn-primary">Export To PDF</button>
+    </div>
+</div>
 {{message}}
 
-
-<div *ngFor="let employee of employees">
-    <app-display-employee [employee]="employee">        
-    </app-display-employee>
+<div id="ListContaint">
+    <div *ngFor="let employee of employees">
+        <app-display-employee [employee]="employee">
+        </app-display-employee>
+    </div>
 </div>
 <!-- <button (click)="nextEmployee()" class="btn btn-primary">
     Veiw Next Employee

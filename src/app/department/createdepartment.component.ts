@@ -55,6 +55,7 @@ export class CreatedepartmentComponent implements OnInit {
         {
           this.toastr.success('Save Data Successfully');
           this.isUpdate = false;
+          this.getId(0);
           this.clearform(this.departmentsForm);
         }
 

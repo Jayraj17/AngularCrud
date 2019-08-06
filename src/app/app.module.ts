@@ -11,7 +11,7 @@ import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator
 import { EmployeeService } from './Services/employee.service';
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
+ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
 import { ToastrModule } from 'ngx-toastr'; 
 
 
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot()  
   ],
   providers: [EmployeeService],

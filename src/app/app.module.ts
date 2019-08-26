@@ -24,16 +24,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreatedepartmentComponent } from './department/createdepartment.component';
 import { ListdepartmentComponent } from './department/listdepartment.component';
 import { DashboardviewComponent } from './dashboard/dashboardview.component';
+import { AuthGuard } from './auth.guard';
+import { CreateEducationComponent } from './education/create-education.component';
+import { ListEducationComponent } from './education/list-education.component';
+
+
 
 
 const appRoutes: Routes = [
-  { path: 'list', component: ListEmployeesComponent },
-  { path: 'create', component: CreateEmployeeComponent }, 
-  { path: 'create/:id', component: CreateEmployeeComponent },  
+  { path: '', redirectTo: '/Login', pathMatch: 'full' },
+  { path: 'list', component: ListEmployeesComponent, canActivate: [AuthGuard] },
+  { path: 'create', component: CreateEmployeeComponent, canActivate: [AuthGuard] }, 
+  { path: 'create/:id', component: CreateEmployeeComponent, canActivate: [AuthGuard] },  
   { path: 'Login', component: LoginComponent },
-  { path: 'Dashboard', component: DashboardviewComponent },
-  { path: 'CreateD', component: CreatedepartmentComponent },
-  { path: '', redirectTo: '/Login', pathMatch: 'full' }
+  { path: 'Dashboard', component: DashboardviewComponent, canActivate: [AuthGuard] },
+  { path: 'CreateDepartment', component: CreatedepartmentComponent, canActivate: [AuthGuard] },
+  { path: 'CreateEducation', component: CreateEducationComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -49,7 +55,7 @@ const appRoutes: Routes = [
     HeaderComponent, 
     CreatedepartmentComponent, 
     ListdepartmentComponent, 
-    DashboardviewComponent, 
+    DashboardviewComponent, CreateEducationComponent, ListEducationComponent, 
    
   ],
   imports: [

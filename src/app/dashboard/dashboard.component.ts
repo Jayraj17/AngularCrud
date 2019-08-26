@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EmployeeService } from '../Services/employee.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private employee: EmployeeService) { }
 
   ngOnInit() {
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.employee.isLogin = false;
+    this.router.navigate(['/']);
   }
 
 }

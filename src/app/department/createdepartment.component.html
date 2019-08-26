@@ -30,4 +30,4 @@
     </div>
   </div>
 </form>
-<app-listdepartment (OutdeptId)='getId($event)'></app-listdepartment>
+<app-listdepartment (OutdeptId)='EditDept($event)' (DeldeptId)='RemoveDept($event)' [departments]="departments"></app-listdepartment>

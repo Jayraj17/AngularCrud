@@ -10,10 +10,11 @@ import { EmployeeService } from './Services/employee.service';
 })
 export class AppComponent implements OnInit {
   title = 'app'; 
-  constructor(private router: Router, private employee: EmployeeService) {
+  token: boolean;
+  constructor(private router: Router, public employee: EmployeeService) {
     
   }
-  ngOnInit() {    
+  ngOnInit() { 
   }
 
 }

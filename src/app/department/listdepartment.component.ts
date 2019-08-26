@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DepartmentService } from '../Services/department.service';
 import { Department } from '../models/department.model';
 import { EventEmitter } from '@angular/core';
@@ -9,9 +9,11 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './listdepartment.component.html',
   styleUrls: ['./listdepartment.component.css']
 })
-export class ListdepartmentComponent implements OnInit {
+export class ListdepartmentComponent implements OnInit, OnChanges {
 
   @Output() public OutdeptId = new EventEmitter();
+  @Output() public DeldeptId = new EventEmitter();
+  @Input() departments: Department[];
 
   constructor(
     private _department: DepartmentService,
@@ -19,10 +21,16 @@ export class ListdepartmentComponent implements OnInit {
 
   ) { }
 
-  departments: Department[];
 
   ngOnInit() {
-    this.LoadDepatmentData();
+    // this.LoadDepatmentData();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes != null) {
+      // if(changes)
+      console.log(changes);
+    }
   }
 
   showForEdit(id: number) {
@@ -30,29 +38,11 @@ export class ListdepartmentComponent implements OnInit {
   }
 
   showForDelete(id: number) {
-    this._department.remove(id).subscribe(
-      (data) => {
-        if (data.ResponseCode === 200) {
-          this.toastr.success("Remove data successfully");
-          this.LoadDepatmentData();
-        }
-        else {
-          this.toastr.warning("Record not remove");
-        }
-      }
-    );
+   this.DeldeptId.emit(id);
   }
 
 
-  LoadDepatmentData() {
 
-    this._department.getDepartment(0).subscribe(
-      (data) => {
-        this.departments = data
-      }
-    );
-
-  }
 
 
 

@@ -13,6 +13,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class ListEmployeesComponent implements OnInit {
   message: string = '';
   employees: Employee[];
+  isLoading: boolean = true;
 
   // employeeToDisplay: Employee;
   //private arrayIndex = 0;
@@ -30,6 +31,7 @@ export class ListEmployeesComponent implements OnInit {
       (data) => {
         console.log(data)
         this.employees = data;
+        this.isLoading = false;
       }, (error) => {
         alert('Error');
       }

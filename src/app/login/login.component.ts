@@ -45,7 +45,12 @@ export class LoginComponent implements OnInit {
           this.employee.isLogin = true;
           this.toastr.success('Login Successfully');
           this.router.navigate(['/create']);
-        } else {
+          localStorage.setItem('token', 'user Login');
+          this.employee.isLogin = true;
+        } else 
+        {
+          this.login.username = null;
+          this.login.password = null;
           this.toastr.warning('Login Fail');
         }
 
@@ -55,3 +60,4 @@ export class LoginComponent implements OnInit {
   }
 
 }
+

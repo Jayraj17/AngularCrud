@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { Department } from '../models/department.model';
 import { DepartmentService } from '../Services/department.service';
 import { Router } from '@angular/router';
@@ -10,10 +10,11 @@ import { NgForm } from '@angular/forms';
   templateUrl: './createdepartment.component.html',
   styleUrls: ['./createdepartment.component.css']
 })
-export class CreatedepartmentComponent implements OnInit {
+export class CreatedepartmentComponent implements OnInit{
 
   @ViewChild('departmentForm') public departmentsForm: NgForm;
   isUpdate: boolean;
+  departments: Department[] = [];
 
 
   department: Department = {
@@ -34,9 +35,10 @@ export class CreatedepartmentComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.LoadDepatmentData();
 
   }
+
 
   saveDepartment(): void {
 
@@ -47,16 +49,24 @@ export class CreatedepartmentComponent implements OnInit {
 
       (data) => {
         console.log(data);
-        if (data === -11) 
-        {
+        if (data === -11) {
           this.toastr.warning('Record Is Already Is Exist');
         }
-        else 
-        {
+        else {
+
           this.toastr.success('Save Data Successfully');
           this.isUpdate = false;
-          this.getId(0);
+          this.EditDept(0);
           this.clearform(this.departmentsForm);
+          if (this.department.deptId) {
+            this.department = {
+              deptId: null,
+              DepartmentName: null,
+              Description: null,
+              IsActive: null
+            };
+          }
+          this.LoadDepatmentData();
         }
 
       }
@@ -64,17 +74,59 @@ export class CreatedepartmentComponent implements OnInit {
 
   }
 
-  getId(id) {
-    this._department.getDepartment(id).subscribe(
-      (data) => {
-        this.department = data[0]
-        this.isUpdate = true;
-      }
-    );
+  EditDept(id) {
+    if (id !== 0) {
+      this._department.getDepartment(id).subscribe(
+        (data) => {
+          this.department = data[0]
+          this.isUpdate = true;
+        }
+      );
+    }
+    else {
+      this._department.getDepartment(0).subscribe(
+        (data) => {
+          this.department = data
+        });
+
+    }
   }
+
+  RemoveDept(id){
+
+this._department.remove(id).subscribe(
+(data) => {
+if (data.ResponseCode === 200) {
+this.toastr.success("Remove data successfully");
+this.LoadDepatmentData();
+}
+else {
+this.toastr.warning("Record not remove");
+}
+}
+);
+
+
+
+  }
+
+
+
+
+
 
   clearform(formName: NgForm) {
     formName.resetForm();
+  }
+
+  LoadDepatmentData() {
+
+    this._department.getDepartment(0).subscribe(
+      (data) => {
+        this.departments = data
+      }
+    );
+
   }
 }
 

@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateEducationComponent implements OnInit {
   @ViewChild('educationForm') public educationForm: NgForm;
+  isUpdate: boolean;
 
   educations: Education[] = [];
 
@@ -41,11 +42,12 @@ export class CreateEducationComponent implements OnInit {
         if (data === -11) {
           this.toastr.warning('Record Is Already Is Exist');
         }
-        else {
+        else
+        {
 
           this.toastr.success('Save Data Successfully');
-          //this.isUpdate = false;
-          // this.getId(0);
+          this.education.EduId = 0;
+          this.isUpdate = false;         
           this.clearform(this.educationForm);
           if (this.education.EduId) {
             this.education = {
@@ -65,9 +67,10 @@ export class CreateEducationComponent implements OnInit {
 
   }
 
-//Clear
+  //Clear
   clearform(formName: NgForm) {
     formName.resetForm();
+    this.education.EduId = 0;
   }
 
   //Load Education 
@@ -82,12 +85,12 @@ export class CreateEducationComponent implements OnInit {
   }
 
 
- EduEdit(id) {
+  EduEdit(id) {
     if (id !== 0) {
       this._education.getEducation(id).subscribe(
         (data) => {
           this.education = data[0]
-         // this.isUpdate = true;
+          this.isUpdate = true;
         }
       );
     }
@@ -99,21 +102,20 @@ export class CreateEducationComponent implements OnInit {
 
     }
   }
-  EduRemove(id)
-  {
+  EduRemove(id) {
     this._education.remove(id).subscribe(
-(data) => {
-if (data.ResponseCode === 200) {
-this.toastr.success("Remove data successfully");
-this.LoadEducationData();
-}
-else {
-this.toastr.warning("Record not remove");
-}
-}
-);
+      (data) => {
+        if (data.ResponseCode === 200) {
+          this.toastr.success("Remove data successfully");
+          this.LoadEducationData();
+        }
+        else {
+          this.toastr.warning("Record not remove");
+        }
+      }
+    );
 
- 
+
   }
 
 

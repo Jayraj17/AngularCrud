@@ -38,7 +38,7 @@ export class ListdepartmentComponent implements OnInit, OnChanges {
   }
 
   showForDelete(id: number) {
-   this.DeldeptId.emit(id);
+    this.DeldeptId.emit(id);
   }
 
 

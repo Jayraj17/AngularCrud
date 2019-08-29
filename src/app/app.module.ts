@@ -11,8 +11,9 @@ import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator
 import { EmployeeService } from './Services/employee.service';
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 
- import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
-import { ToastrModule } from 'ngx-toastr'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 
 
 
@@ -34,8 +35,8 @@ import { ListEducationComponent } from './education/list-education.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/Login', pathMatch: 'full' },
   { path: 'list', component: ListEmployeesComponent, canActivate: [AuthGuard] },
-  { path: 'create', component: CreateEmployeeComponent, canActivate: [AuthGuard] }, 
-  { path: 'create/:id', component: CreateEmployeeComponent, canActivate: [AuthGuard] },  
+  { path: 'create', component: CreateEmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'create/:id', component: CreateEmployeeComponent, canActivate: [AuthGuard] },
   { path: 'Login', component: LoginComponent },
   { path: 'Dashboard', component: DashboardviewComponent, canActivate: [AuthGuard] },
   { path: 'CreateDepartment', component: CreatedepartmentComponent, canActivate: [AuthGuard] },
@@ -49,14 +50,14 @@ const appRoutes: Routes = [
     CreateEmployeeComponent,
     SelectRequiredValidatorDirective,
     ConfirmEqualValidatorDirective,
-    DisplayEmployeeComponent,    
-    LoginComponent, 
-    DashboardComponent, 
-    HeaderComponent, 
-    CreatedepartmentComponent, 
-    ListdepartmentComponent, 
-    DashboardviewComponent, CreateEducationComponent, ListEducationComponent, 
-   
+    DisplayEmployeeComponent,
+    LoginComponent,
+    DashboardComponent,
+    HeaderComponent,
+    CreatedepartmentComponent,
+    ListdepartmentComponent,
+    DashboardviewComponent, CreateEducationComponent, ListEducationComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    ToastrModule.forRoot()  
+    ToastrModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

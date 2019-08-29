@@ -9,6 +9,9 @@ export class Employee {
     dateofBirth: Date;
     department: string;
     departmentName: string;
+    eduId: string;
+    education: string;
+    citys: string;
     isActive: boolean;
     photoPath: string;
     password: string;

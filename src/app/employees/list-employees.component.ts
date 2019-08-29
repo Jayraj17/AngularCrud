@@ -62,8 +62,7 @@ export class ListEmployeesComponent implements OnInit {
   //2)npm install xlsx -- save
   //REf Side  https://medium.com/@madhavmahesh/exporting-an-excel-file-in-angular-927756ac9857
 
-  public Generatexls() 
-  {    
+  public Generatexls() {
     this._commonService.Generate_XLS(this.employees, "test.xls");
   }
 
@@ -72,11 +71,10 @@ export class ListEmployeesComponent implements OnInit {
   //2) npm install html2canvas
   //Ref :- https://neelbhatt.com/2018/09/16/convert-html-to-pdf-using-angular-6/
 
-public Generatepdf()
-{
-  var d = document.getElementById('ListContaint');
-  this._commonService.Generate_PDF(d,'test');
-}
+  public Generatepdf() {
+    var d = document.getElementById('ListContaint');
+    this._commonService.Generate_PDF(d, 'test');
+  }
 
 
 
@@ -94,6 +92,9 @@ public Generatepdf()
         dateofBirth: new Date('10/25/1990'),
         department: '3',
         departmentName: "test",
+        eduId: 'test',
+        education: 'select',
+        citys: null,
         isActive: true,
         photoPath: 'assets/images/man.jpg',
         password: '123456',

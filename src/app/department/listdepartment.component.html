@@ -1,46 +1,46 @@
 <div class="panel panel-primary">
 
 
-  <div class="panel-heading">
-    <div class="row">
-      <div class="col-xs-1">
-        <h3 class="panel-title">#</h3>
-      </div>
-      <div class="col-xs-3">
-        <h3 class="panel-title">Department</h3>
-      </div>
-      <div class="col-xs-3">
-        <h3 class="panel-title">Description</h3>
-      </div>
-      <div class="col-xs-3">
-        <h3 class="panel-title">Action</h3>
-      </div>
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-1">
+                <h3 class="panel-title">#</h3>
+            </div>
+            <div class="col-xs-3">
+                <h3 class="panel-title">Department</h3>
+            </div>
+            <div class="col-xs-3">
+                <h3 class="panel-title">Description</h3>
+            </div>
+            <div class="col-xs-3">
+                <h3 class="panel-title">Action</h3>
+            </div>
+        </div>
     </div>
-  </div>
 
 
 
-  <div class="panel-body">
+    <div class="panel-body">
 
-    <div *ngFor="let dept of departments">
-      <div class="row">
-        <div class="col-xs-1">
-          {{dept.deptId}}
-        </div>
-        <div class="col-xs-3">
-          {{dept.DepartmentName}}
-        </div>
-        <div class="col-xs-3">
-          {{dept.Description}}
-        </div>
-        <div class="col-xs-3">
-          <a class="btn" (click)="showForEdit(dept.deptId)">
+        <div *ngFor="let dept of departments; let i = index">
+            <div class="row">
+                <div class="col-xs-1">
+                    <!-- {{dept.deptId}} -->
+                    {{i+1}}
+                </div>
+                <div class="col-xs-3">
+                    {{dept.DepartmentName}}
+                </div>
+                <div class="col-xs-3">
+                    {{dept.Description}}
+                </div>
+                <div class="col-xs-3">
+                    <a class="btn" (click)="showForEdit(dept.deptId)">
             EDIT
-          </a>
-          | <a class="btn" (click)="showForDelete(dept.deptId)">
+          </a> | <a class="btn" (click)="showForDelete(dept.deptId)">
             DELETE
           </a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>

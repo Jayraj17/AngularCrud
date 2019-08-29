@@ -1,46 +1,44 @@
 <div class="panel panel-primary">
 
 
-  <div class="panel-heading">
-    <div class="row">
-      <div class="col-xs-1">
-        <h3 class="panel-title">#</h3>
-      </div>
-      <div class="col-xs-3">
-        <h3 class="panel-title">Education</h3>
-      </div>
-      <div class="col-xs-3">
-        <h3 class="panel-title">Description</h3>
-      </div>
-      <div class="col-xs-3">
-        <h3 class="panel-title">Action</h3>
-      </div>
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-1">
+                <h3 class="panel-title">#</h3>
+            </div>
+            <div class="col-xs-3">
+                <h3 class="panel-title">Education</h3>
+            </div>
+            <div class="col-xs-3">
+                <h3 class="panel-title">Description</h3>
+            </div>
+            <div class="col-xs-3">
+                <h3 class="panel-title">Action</h3>
+            </div>
+        </div>
     </div>
-  </div>
 
 
 
-  <div class="panel-body">
-
-    <div *ngFor="let edu of educations">
-      <div class="row">
-        <div class="col-xs-1">
-          {{edu.EduId}}
-        </div>
-        <div class="col-xs-3">
-          {{edu.Education}}
-        </div>
-        <div class="col-xs-3">
-          {{edu.Description}}
-        </div>
-        <div class="col-xs-3">
-          <a class="btn" (click)="showForEdit(edu.EduId)">
+    <div class="panel-body">
+        <div *ngFor="let edu of educations; let i = index">
+            <div class="row">
+                <div class="col-xs-1">
+                    {{i+1}}
+                </div>
+                <div class="col-xs-3">
+                    {{edu.Education}}
+                </div>
+                <div class="col-xs-3">
+                    {{edu.Description}}
+                </div>
+                <div class="col-xs-3">
+                    <a class="btn" (click)="showForEdit(edu.EduId)">
             EDIT
-          </a>
-          | <a class="btn" (click)="showForDelete(edu.EduId)">
+          </a> | <a class="btn" (click)="showForDelete(edu.EduId)">
             DELETE
           </a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>

@@ -7,6 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DepartmentService } from '../Services/department.service';
 import { ThrowStmt } from '@angular/compiler';
+import { Education } from '../models/education.model';
+import { EducationService } from '../Services/education.service';
 
 @Component({
   selector: 'app-create-employee',
@@ -21,6 +23,11 @@ export class CreateEmployeeComponent implements OnInit {
   previewPhoto = false;
   //employee: Employee = new Employee();
 
+  dropdownList = [];
+  selectedItems = [];  
+  dropdownSettings = {};
+  
+
   employee: Employee = {
     id: null,
     name: null,
@@ -31,6 +38,9 @@ export class CreateEmployeeComponent implements OnInit {
     dateofBirth: null,
     department: "select",
     departmentName: "select",
+    eduId: 'select',
+    education: 'select',
+    citys: null,
     isActive: null,
     photoPath: null,
     password: null,
@@ -38,6 +48,8 @@ export class CreateEmployeeComponent implements OnInit {
   };
 
   departments: Department[];
+  educations: Education[];
+  city: number[] = [];
 
   // departments: Department[] = [
   //   { deptId: 1, DepartmentName: 'Help Desk' },
@@ -53,7 +65,8 @@ export class CreateEmployeeComponent implements OnInit {
     private _router: Router,
     private aroute: ActivatedRoute,
     private toastr: ToastrService,
-    private _department: DepartmentService
+    private _department: DepartmentService,
+    private _education: EducationService
 
   ) {
 
@@ -64,13 +77,22 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit() {
 
+    //Load Department
     this._department.getDepartment(0).subscribe(
       (data) => {
         this.departments = data
 
       }
-
     );
+
+    //Load Educaton 
+    this._education.getEducation(0).subscribe(
+      (data) => {
+        this.educations = data
+        console.log(data);
+      }
+    );
+
 
     this.aroute.paramMap.subscribe(
       paramMap => {
@@ -82,6 +104,39 @@ export class CreateEmployeeComponent implements OnInit {
         }
       }
     );
+
+
+    this.dropdownList = [
+      { item_id: 1, item_text: 'Mumbai' },
+      { item_id: 2, item_text: 'Bangaluru' },
+      { item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Ahmedabad', isDisabled: true },
+      { item_id: 5, item_text: 'New Delhi' }
+    ];
+
+    // this.dropdownList = ['Mumbai', 'Amd', 'Mehsana', 'Delhi'];
+    this.selectedItems = [
+      { item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Navsari' }
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+  }
+  onItemSelect(item: any)
+  {
+    this.city.push(item.textField);
+  }
+  onSelectAll(items: any) 
+  {
+    this.city.push(items.textField);
+    //console.log(items);
   }
 
   getEmployeeDetails(id: number): void {
@@ -96,14 +151,15 @@ export class CreateEmployeeComponent implements OnInit {
     this._router.navigate(['/Dashboard']);
   }
   saveEmployee(): void {
-
+   this.employee.citys = this.city.toString();   
     this._employeeService.save(this.employee).subscribe(
-      (data) => { this.toastr.success('Save Data Successfully');
-      this.getEmployeeDetails(0);
-    }
+      (data) => {
+        this.toastr.success('Save Data Successfully');
+        this.getEmployeeDetails(0);
+        this._router.navigate(['list']);
+      }
     );
 
-    this._router.navigate(['list']);
   }
 
   // gotoDepartment(): void {

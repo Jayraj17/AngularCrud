@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './createdepartment.component.html',
   styleUrls: ['./createdepartment.component.css']
 })
-export class CreatedepartmentComponent implements OnInit{
+export class CreatedepartmentComponent implements OnInit {
 
   @ViewChild('departmentForm') public departmentsForm: NgForm;
   isUpdate: boolean;
@@ -45,9 +45,12 @@ export class CreatedepartmentComponent implements OnInit{
     if (this.department.DepartmentName == "") {
 
     }
+
     this._department.save(this.department).subscribe(
 
+
       (data) => {
+
         console.log(data);
         if (data === -11) {
           this.toastr.warning('Record Is Already Is Exist');
@@ -56,9 +59,17 @@ export class CreatedepartmentComponent implements OnInit{
 
           this.toastr.success('Save Data Successfully');
           this.isUpdate = false;
-          this.EditDept(0);
+          this.department.deptId = 0;
+
           this.clearform(this.departmentsForm);
           if (this.department.deptId) {
+            this.department = {
+              deptId: null,
+              DepartmentName: null,
+              Description: null,
+              IsActive: null
+            };
+          } else {
             this.department = {
               deptId: null,
               DepartmentName: null,
@@ -92,19 +103,19 @@ export class CreatedepartmentComponent implements OnInit{
     }
   }
 
-  RemoveDept(id){
+  RemoveDept(id) {
 
-this._department.remove(id).subscribe(
-(data) => {
-if (data.ResponseCode === 200) {
-this.toastr.success("Remove data successfully");
-this.LoadDepatmentData();
-}
-else {
-this.toastr.warning("Record not remove");
-}
-}
-);
+    this._department.remove(id).subscribe(
+      (data) => {
+        if (data.ResponseCode === 200) {
+          this.toastr.success("Remove data successfully");
+          this.LoadDepatmentData();
+        }
+        else {
+          this.toastr.warning("Record not remove");
+        }
+      }
+    );
 
 
 
@@ -117,6 +128,8 @@ this.toastr.warning("Record not remove");
 
   clearform(formName: NgForm) {
     formName.resetForm();
+    this.isUpdate = false;
+    this.department.deptId = 0;
   }
 
   LoadDepatmentData() {

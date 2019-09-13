@@ -28,6 +28,12 @@ import { DashboardviewComponent } from './dashboard/dashboardview.component';
 import { AuthGuard } from './auth.guard';
 import { CreateEducationComponent } from './education/create-education.component';
 import { ListEducationComponent } from './education/list-education.component';
+import { GrdEmployeesComponent } from './employees/grd-employees.component';
+
+
+
+
+
 
 
 
@@ -40,7 +46,8 @@ const appRoutes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: 'Dashboard', component: DashboardviewComponent, canActivate: [AuthGuard] },
   { path: 'CreateDepartment', component: CreatedepartmentComponent, canActivate: [AuthGuard] },
-  { path: 'CreateEducation', component: CreateEducationComponent, canActivate: [AuthGuard] }
+  { path: 'CreateEducation', component: CreateEducationComponent, canActivate: [AuthGuard] },
+  { path: 'grdList', component: GrdEmployeesComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -56,7 +63,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     CreatedepartmentComponent,
     ListdepartmentComponent,
-    DashboardviewComponent, CreateEducationComponent, ListEducationComponent,
+    DashboardviewComponent, CreateEducationComponent, ListEducationComponent,GrdEmployeesComponent 
 
   ],
   imports: [

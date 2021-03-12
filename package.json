@@ -28,7 +28,7 @@
     "devextreme": "^18.2.7",
     "devextreme-angular": "^18.2.7",
     "file-saver": "^2.0.2",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "ng-multiselect-dropdown-angular7": "^0.1.5",
     "ngx-bootstrap": "^3.0.1",
     "ngx-toastr": "^10.0.4",
